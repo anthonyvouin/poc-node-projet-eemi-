@@ -1,0 +1,16 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 60
+      arrivalRate: 10
+
+scenarios:
+  - flow:
+      - get:
+          url: '/api/articles'
+  - flow:
+      - post:
+          url: '/api/articles'
+          json:
+            title: 'Nouvel Article'
+            content: 'Contenu de l''article {{ $randomNumber }}'

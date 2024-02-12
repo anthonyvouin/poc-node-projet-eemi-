@@ -1,7 +1,11 @@
 import express from "express";
 import articlesRouter from "./routes/articles.js";
-import connectDB from "./config/db.config.js";
+import {
+  connectDB,
+  logMongoDBPerformanceBeforeRequest,
+} from "./config/db.config.js";
 import authRouter from "./routes/auth.js";
+
 
 const app = express();
 const port = 3000;
@@ -12,6 +16,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Connexion à la base de données
 connectDB();
+
+//perf db
+app.use(logMongoDBPerformanceBeforeRequest);
 
 // Utilisation des routes
 app.use("/api/articles", articlesRouter);

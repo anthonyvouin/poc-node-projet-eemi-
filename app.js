@@ -15,7 +15,7 @@ connectDB();
 
 // Utilisation des routes
 app.use("/api/articles", articlesRouter);
-app.use("/auth",authRouter);
+app.use("/api/auth",authRouter);
 
 // Lancer le serveur
 app.listen(port, () => {
